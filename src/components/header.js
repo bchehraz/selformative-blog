@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
 
 //import Menu from '../Menu';
 //import MenuButton from '../MenuButton';
@@ -26,6 +27,7 @@ class Header extends React.Component {
   }
 
   render() {
+
     return (
       <div
         style={{
@@ -67,6 +69,11 @@ class Header extends React.Component {
       </div>
     );
   }
+}
+
+Header.propTypes = {
+  headerImage: PropTypes.object,
+  sizes: PropTypes.object
 }
 
 const styles = {
