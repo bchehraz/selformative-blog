@@ -1,0 +1,29 @@
+div.blog-post-preview,
+div.blog-post-preview-main {
+    border-bottom: 2px solid #e6e6e6;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 20px;
+}
+
+div.blog-post-preview-main {
+}
+
+h1 > * {
+    font-size: 1.2rem;
+    text-decoration-line: none;
+}
+h2 {
+    font-size: 0.8rem !important;
+    font-weight: 100 !important;
+}
+
+/**
+* Individual Blog Post Page Style
+*/
+.blog-post-container {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 20px;
+}
