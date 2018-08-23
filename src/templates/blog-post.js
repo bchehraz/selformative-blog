@@ -2,11 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-export default function Template(propTypes: {
-  data: PropTypes.object,
-}, {
-  data
-}) {
+const Template = ({ data }) => {
   const post = data.markdownRemark;
   return (
     <div className="blog-post-container">
@@ -17,10 +13,16 @@ export default function Template(propTypes: {
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
-        </div>
+      </div>
     </div>
   )
 }
+
+Template.propTypes = {
+  data: PropTypes.object
+}
+
+export default Template
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
