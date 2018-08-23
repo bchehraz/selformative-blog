@@ -14,7 +14,7 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
+    <Header headerImage={data.headerImage} />
     <div
       style={{
         margin: '0 auto',
@@ -36,10 +36,17 @@ Layout.propTypes = {
 export default Layout
 
 export const query = graphql`
-  query SiteTitleQuery {
+  query SiteDataQuery {
     site {
       siteMetadata {
         title
+      }
+    }
+
+    # query header image
+    headerImage: imageSharp(id: { regex: "/logo_3_2/" }) {
+      sizes(maxWidth: 1240 ) {
+          ...GatsbyImageSharpSizes
       }
     }
   }
