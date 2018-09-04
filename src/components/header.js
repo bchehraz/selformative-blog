@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+
 import Link from 'gatsby-link'
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
-
+import Headroom from 'react-headroom';
+import Navigation from './Navigation/';
 //import Menu from '../Menu';
 //import MenuButton from '../MenuButton';
 //import EmailList from '../EmailList';
@@ -29,12 +31,14 @@ class Header extends React.Component {
   render() {
 
     return (
+
       <div
         style={{
           //background: '#030301',
           marginBottom: '2rem',
         }}
       >
+        <Headroom>
         <div
           style={{
             margin: '0 auto',
@@ -43,13 +47,14 @@ class Header extends React.Component {
             alignItems: 'center',
             justifyContent: 'space-around',
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: 'column',
             background: 'white',
           }}
         >
 
           {/*<Nav style={{ flex: 1, textAlign: 'right' }}/> */}
           <div style={{ flex: 1 }}>
+            <Link to="/">
             <Img
               className="HeaderLogo"
               title="Header Image"
@@ -63,9 +68,13 @@ class Header extends React.Component {
                 margin: 'auto',
               }}
             />
+            </Link>
           </div>
-          <div style={{ flex: 1 }} />
+          <div style={{ flex: 1 }}>
+            <Navigation />
+          </div>
         </div>
+        </Headroom>
       </div>
     );
   }
@@ -77,12 +86,14 @@ Header.propTypes = {
 }
 
 const styles = {
-  navStyle: {
-    textAlign: 'center',
+  ul: {
     display: 'flex',
-    flex: 1,
-    margin: 'auto',
-  }
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 0,
+    margin: 0,
+    flex: 1
+  },
 }
 
 export default Header
