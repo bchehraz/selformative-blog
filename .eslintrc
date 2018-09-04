@@ -1,7 +1,8 @@
 {
   "parser": "babel-eslint",
   "rules": {
-      "strict": 0
+      "strict": 0,
+      "react/prop-types": 0
   },
   "extends": [
     "plugin:react/recommended"
