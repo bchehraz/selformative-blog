@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import Headroom from 'react-headroom';
-import Navigation from './Navigation/';
+import Navigation from '../Navigation/';
 //import Menu from '../Menu';
 //import MenuButton from '../MenuButton';
 //import EmailList from '../EmailList';

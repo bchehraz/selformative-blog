@@ -5,17 +5,6 @@ import './index.css';
 class Navigation extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      clicked: false
-    }
-  }
-
-  handleClick = (e) => {
-    e.preventDefault();
-    this.setState({
-      clicked: true
-    })
-    e.target.style.color = 'blue';
   }
 
   render() {
@@ -23,24 +12,24 @@ class Navigation extends React.Component {
       <nav style={styles.navStyle}>
       <div
         className="navItem"
-        style={(this.state.clicked)? {...styles.navItem, color: 'black'} : styles.navItem }
+        style={styles.navItem}
         onClick={this.handleClick}
       >
-          <Link style={(this.state.clicked)? {...styles.linkStyle, color: 'black'} : styles.linkStyle } to="#/about">{`ABOUT`}</Link>
+          <h2><Link style={styles.linkStyle} to="/about" activeStyle={styles.activeLink}>{`ABOUT ME`}</Link></h2>
         </div>
         <div
           className="navItem"
-          style={(this.state.clicked)? {...styles.navItem, color: 'black'} : styles.navItem }
+          style={styles.navItem}
           onClick={this.handleClick}
         >
-          <Link style={(this.state.clicked)? {...styles.linkStyle, color: 'black'} : styles.linkStyle } to="#/blog">{`BLOG`}</Link>
+          <h2><Link style={styles.linkStyle} to="/blog" activeStyle={styles.activeLink}>{`BLOG`}</Link></h2>
         </div>
         <div
           className="navItem"
-          style={(this.state.clicked)? {...styles.navItem, color: 'black'} : styles.navItem }
+          style={styles.navItem}
           onClick={this.handleClick}
         >
-          <Link style={(this.state.clicked)? {...styles.linkStyle, color: 'black'} : styles.linkStyle } to="#/chat">{`LET'S CHAT`}</Link>
+          <h2><Link style={styles.linkStyle} to="/chat" activeStyle={styles.activeLink}>{`LET'S CHAT`}</Link></h2>
         </div>
       </nav>
     );
@@ -62,6 +51,10 @@ const styles = {
   navItem: {
     padding: 20,
     fontSize: '1em',
+  },
+  activeLink: {
+    color: '#4286f4',
+    borderBottom: '1px solid black',
   }
 }
 

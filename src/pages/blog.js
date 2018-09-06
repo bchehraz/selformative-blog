@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import '../styles/blog-listing.css'
 import BgImage from '../components/BgImage';
 
-class Index extends React.Component {
+class Blog extends React.Component {
 
   constructor() {
     super()
@@ -56,14 +56,14 @@ class Index extends React.Component {
   }
 }
 
-Index.propTypes = {
+Blog.propTypes = {
    data: PropTypes.object
 }
 
-export default Index;
+export default Blog;
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query BlogQuery {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {

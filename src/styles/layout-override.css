@@ -1,0 +1,33 @@
+/***
+Selformative- Main CSS Styles.
+This file is overriding the defaults set in the layouts directory
+***/
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+body {
+    color: black;
+    font-family: 'Quicksand, sans-serif';
+}
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    /* border: 5px solid #ffdb3a; */
+}
+h1 {
+    font-size: 1.5rem;
+    line-height: 0.5rem;
+}
+p, div {
+    font-size: 1em;
+}
+
+input:focus, button {
+  outline-width: 0;
+}
+
+button:focus, button:active {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}

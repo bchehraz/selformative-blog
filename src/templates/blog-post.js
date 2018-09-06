@@ -1,8 +1,14 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image'
+
+import BgImage from '../components/BgImage';
+
 
 const Template = ({ data }) => {
+  console.log("Data: ==> ")
+  console.log(data);
   const post = data.markdownRemark;
   return (
     <div className="blog-post-container">
@@ -32,6 +38,8 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         path
         title
+        imgSrc
+        imgAlt
       }
     }
   }

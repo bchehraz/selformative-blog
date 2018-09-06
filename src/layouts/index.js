@@ -5,14 +5,15 @@ import Media from 'react-media'
 import Link from 'gatsby-link';
 
 import Header from '../components/Header'
+import './index.sass'
 // import './index.css'
 // import '../styles/layout-override.css'
 
 import Typography from 'typography'
-import kirkhamTheme from 'typography-theme-kirkham'
+import deyoungTheme from 'typography-theme-de-young'
 
 
-const typography = new Typography(kirkhamTheme)
+const typography = new Typography(deyoungTheme)
 
 // Output CSS as string.
 typography.toString()
