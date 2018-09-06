@@ -34,6 +34,22 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              //this plugin uses the maxWidth
+              //to generate different widths of each image
+              maxWidth: 590
+            }
+          }
+        ]
+      }
+    },
+    'gatsby-plugin-sass'
   ],
   pathPrefix: '/selformative-blog',
 }
