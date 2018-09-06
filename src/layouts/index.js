@@ -5,8 +5,8 @@ import Media from 'react-media'
 import Link from 'gatsby-link';
 
 import Header from '../components/Header'
-import './index.css'
-import '../styles/layout-override.css'
+// import './index.css'
+// import '../styles/layout-override.css'
 
 import Typography from 'typography'
 import kirkhamTheme from 'typography-theme-kirkham'
