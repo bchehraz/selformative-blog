@@ -49,13 +49,14 @@ h2.date, h4.category {
   color: #4286f4;
 }
 
-h4.blog-category,
-h4.blog-category-label {
+div.blog-post h4.blog-category-label,
+span.blog-category {
   color: #aaa;
   display: inline;
 }
 
-h4.blog-category:hover {
+div.blog-post span.blog-category:hover,
+span.blog-category-list:hover {
   color: #4286f4;
 }
 
@@ -68,7 +69,11 @@ div.blog-listing-container:hover h4.category {
 * Individual Blog Post Page Style
 */
 
-.blog-post-container {
+div.blog-post-container {
   /* background-color: rgba(255, 255, 255, 0.4);
   padding: 20px; */
+}
+
+div.blog-post h4.blog-category-label {
+
 }

@@ -56,7 +56,7 @@ const Layout = ({ children, data }) => (
             <div
               style={{
                 margin: "0 auto",
-                maxWidth: 980,
+                maxWidth: '80vw',
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
