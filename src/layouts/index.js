@@ -5,6 +5,7 @@ import Media from 'react-media'
 import Link from 'gatsby-link';
 
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import './index.sass'
 // import './index.css'
 // import '../styles/layout-override.css'
@@ -23,7 +24,7 @@ typography.toString()
 typography.injectStyles()
 
 const Layout = ({ children, data }) => (
-  <div>
+  <div  style={{ background: '#efefef' }}>
     <Helmet
       title={data.site.siteMetadata.title}
       meta={[
@@ -71,24 +72,7 @@ const Layout = ({ children, data }) => (
         }
       </Media>
     </div>
-    <div style={{
-      textAlign: 'center',
-      padding: '18px',
-      backgroundColor: 'white',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
-    }}>
-      <footer style={{ flex: 1, maxWidth: 980 }}>
-        <div style={{ padding: '18px',  borderTop: '1px solid black' }}>
-          <Link style={{ padding: '5px' }} to="/">{`Contact`}</Link>
-          <Link style={{ padding: '5px' }} to="/">{`Terms of Service`}</Link>
-          <Link style={{ padding: '5px' }} to="/">{`Privacy Policy`}</Link><br />
-        </div>
-        Selformative &copy; 2018
-
-      </footer>
-    </div>
+    <Footer />
   </div>
 )
 
