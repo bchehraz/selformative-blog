@@ -11,7 +11,7 @@
    const { createPage } = boundActionCreators;
 
    const blogPostTemplate = path.resolve("src/templates/blog-post.js");
-   //const categoryTemplate = path.resolve("src/templates/categories.js");
+   const categoryTemplate = path.resolve("src/templates/categories.js");
 
    return graphql(`
      {
@@ -26,6 +26,7 @@
              frontmatter {
                date
                path
+               tags
              }
            }
          }
@@ -42,12 +43,12 @@
      posts.forEach(({ node }) => {
        createPage({
          path: node.frontmatter.path,
-         component: blogPostTemplate,
+         component: blogPostTemplate
        });
      });
 
      // Category/Tag Pages:
-     /*let tags = [];
+     let tags = [];
      // Iterate through each post, putting all found tags into `tags`
      _.each(posts, edge => {
        if (_.get(edge, "node.frontmatter.tags")) {
@@ -66,6 +67,6 @@
            tag,
          },
        });
-     });*/
+     });
    });
  }

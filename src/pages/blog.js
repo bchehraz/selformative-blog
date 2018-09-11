@@ -1,10 +1,11 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { push } from 'gatsby-link'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
+import Media from 'react-media'
 
 import '../styles/blog-listing.css'
-import BgImage from '../components/BgImage';
 
 class Blog extends React.Component {
 
@@ -20,32 +21,68 @@ class Blog extends React.Component {
     }
   }
 
+  getTags = (tags) => {
+    if (tags !== null) {
+      return tags.join(", ");
+    }
+    return "No Category Found";
+  }
+
   render() {
     const { edges: posts } = this.props.data.allMarkdownRemark;
 
     return (
-      <div className="blog-posts">
+      <div className="blog-listings">
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }, index) => {
-            if (index === 0) {
+            const title = post.frontmatter.title;
+            const tags = post.frontmatter.tags;
+
+            if (index % 2 === 0) {
               return (
-                <div className="blog-post-preview-main" key={post.id}>
-                  <h1>
-                    <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
-                  </h1>
-                  <h2>{post.frontmatter.date}</h2>
+                <div
+                  style={styles.container}
+                  className="blog-listing-container"
+                  onClick={() => push(post.frontmatter.path)}
+                >
+                  <div style={styles.container} className="blog-listing-preview-main">
+                    <div style={styles.blogContainer} key={post.id}>
+                      <h4 className="category">{this.getTags(tags)}</h4>
+                      <h1>
+                        {title}
+                      </h1>
+                      <h2 className="date" >{post.frontmatter.date}</h2>
+
+                      <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+                    </div>
+                    <div className="blog-listing-preview-main blog-post-image" style={styles.blogImageContainer}>
+                      <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
+                    </div>
+                  </div>
                 </div>
               );
             } else {
               return (
-                <div className="blog-post-preview" key={post.id}>
-                  <h1>
-                    <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
-                  </h1>
-                  <h2>
-                    {post.frontmatter.date}
-                  </h2>
+                <div
+                  style={styles.container}
+                  className="blog-listing-container"
+                  onClick={() => push(post.frontmatter.path)}
+                >
+                  <div style={styles.container} className="blog-listing-preview-main">
+                    <div className="blog-listing-preview-main" style={styles.blogImageContainer}>
+                      <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
+                    </div>
+                    <div style={styles.blogContainer} key={post.id}>
+                      <h4 className="category">{this.getTags(tags)}</h4>
+                      <h1>
+                        {title}
+                      </h1>
+                      <h2 className="date" >{post.frontmatter.date}</h2>
+
+                      <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+                    </div>
+                  </div>
                 </div>
               )
             }
@@ -60,6 +97,24 @@ Blog.propTypes = {
    data: PropTypes.object
 }
 
+const styles = {
+  main: {
+
+  },
+  container: {
+    display: 'flex',
+    width: '100%',
+    alignItems: 'center',
+  },
+  blogContainer: {
+    padding: 10,
+    flex: 1,
+  },
+  blogImageContainer: {
+    flex: 1
+  }
+}
+
 export default Blog;
 
 export const pageQuery = graphql`
@@ -68,10 +123,19 @@ export const pageQuery = graphql`
       edges {
         node {
           id
+          excerpt
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
             path
+            tags
+            featuredImage {
+              childImageSharp {
+                sizes(maxWidth: 630) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }
