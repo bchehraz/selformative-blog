@@ -1,0 +1,56 @@
+
+.HeaderLogo
+  width: 200px
+  max-width: 400px
+  margin: auto
+  -webkit-transition: all 100ms ease-in-out
+  -moz-transition: all 100ms ease-in-out
+  -ms-transition: all 100ms ease-in-out
+  -o-transition: all 100ms ease-in-out
+  transition: all 100ms ease-in-out
+
+.headroom--scrolled
+  transition: transform 200ms ease-in-out
+
+.headroom--unpinned
+  position: fixed
+  transform: translateY(-100%)
+
+.headroom--pinned
+  position: fixed
+  transform: translateY(0%)
+  -webkit-transition: all 200ms ease-in-out
+  -moz-transition: all 200ms ease-in-out
+  -ms-transition: all 200ms ease-in-out
+  -o-transition: all 200ms ease-in-out
+  transition: all 200ms ease-in-out
+
+.headroom--pinned .navItem
+  opacity: 0
+  height: 0px
+  transform: translateY(-100%)
+
+.headroom--unpinned .navItem
+  opacity: 0
+  position: absolute
+  top: -100px
+
+.navItem
+  padding: 0px 30px
+
+.headroom--scrolled .HeaderLogo
+  width: 100px
+
+/*** TODO: Edit this ***/
+.headroom--scrolled:hover .navItem
+  opacity: 1
+  height: 50px
+  transform: translateY(0%)
+//   opacity: 0
+//   height: 0
+//
+// .headroom:hover .navItem
+//   position: relative
+//   visibility: visible
+//   height: 50px
+//   opacity: 1
