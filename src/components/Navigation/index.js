@@ -10,11 +10,10 @@ class Navigation extends React.Component {
   render() {
     return (
       <nav style={styles.navStyle}>
-      <div
-        className="navItem"
-        style={styles.navItem}
-        onClick={this.handleClick}
-      >
+        <div
+          className="navItem"
+          onClick={this.handleClick}
+        >
           <h2><Link style={styles.linkStyle} to="/about" activeStyle={styles.activeLink}>{`ABOUT ME`}</Link></h2>
         </div>
         <div
@@ -43,14 +42,11 @@ const styles = {
     flex: 1,
     margin: 'auto',
     color: 'black',
+    padding: 0,
   },
   linkStyle: {
-    color: 'inherit',
+    color: '#aaa',
     textDecoration: 'none',
-  },
-  navItem: {
-    padding: 20,
-    fontSize: '1em',
   },
   activeLink: {
     color: '#4286f4',
