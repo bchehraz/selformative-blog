@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image'
 import Link from 'gatsby-link'
 
-import BgImage from '../components/BgImage';
+import '../styles/blog-post.sass'
 
 const Template = ({ data }) => {
   const post = data.markdownRemark;
@@ -13,40 +13,36 @@ const Template = ({ data }) => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.mainContent}>
-      <div className="blog-post-container">
-        <Helmet title={`Selformative - ${post.frontmatter.title}`} />
-          <div className="blog-post">
-            <h1>{post.frontmatter.title}</h1>
-            <h2 className="date">{post.frontmatter.date}</h2>
-            <h4 className="blog-category-label">{"in "}</h4>
-            {
-              tags.map((category, index) => {
-                let useComma = (index+1 != tags.length);
-                return (
-                  <span key={index} style={{ color: '#aaa' }}>
-                    <h4 className="blog-category-label">
-                      <span className="blog-category">
-                        <Link key={index} to={'/categories/'+category.replace(/\s+/g, '-').toLowerCase()} style={{ color: 'inherit' }}>
-                          {category}
-                        </Link>
-                      </span>
-                    </h4>
-                    {(useComma) ? ", " : ""}
+      <Helmet title={`Selformative - ${post.frontmatter.title}`} />
+      <div className="main-content">
+        <h1>{post.frontmatter.title}</h1>
+        <h2 className="date">{post.frontmatter.date}</h2>
+        <h4 className="blog-category-label">{"in "}</h4>
+        {
+          tags.map((category, index) => {
+            let useComma = (index+1 != tags.length);
+            return (
+              <span key={index} style={{ color: '#aaa' }}>
+                <h4 className="blog-category-label">
+                  <span className="blog-category">
+                    <Link key={index} to={'/categories/'+category.replace(/\s+/g, '-').toLowerCase()} style={{ color: 'inherit' }}>
+                      {category}
+                    </Link>
                   </span>
-                )
-              })
-            }
-            <div style={{ paddingTop: 10, paddingBottom: 10 }}>
-              <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
-            </div>
-            <div
-              className="blog-post-content"
-              dangerouslySetInnerHTML={{ __html: post.html }}
-            />
+                </h4>
+                {(useComma) ? ", " : ""}
+              </span>
+            )
+          })
+        }
+        <div style={{ paddingTop: 10, paddingBottom: 10 }}>
+          <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
         </div>
-        </div>
-      </div>
+        <div
+          className="blog-post-content"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+      </div>{/* <div main-content */}
       <div className="side-content" style={styles.sideContent}>
         <h3>Categories</h3>
         {
@@ -62,7 +58,7 @@ const Template = ({ data }) => {
             )
           })
         }
-      </div>
+      </div>{/* <div className=side-content */}
     </div>
   )
 }
@@ -73,18 +69,13 @@ Template.propTypes = {
 
 const styles = {
   container: {
-    border: '1px solid red',
+    border: '0px solid red',
     display: 'flex',
-  },
-  mainContent: {
-    flex: 3,
-    padding: 20,
-    border: '1px solid blue',
   },
   sideContent: {
     flex: 1,
     padding: 20,
-    border: '1px solid green',
+    border: '0px solid green',
   },
 }
 
