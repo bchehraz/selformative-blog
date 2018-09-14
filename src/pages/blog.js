@@ -32,7 +32,7 @@ class Blog extends React.Component {
     const { edges: posts } = this.props.data.allMarkdownRemark;
 
     return (
-      <div className="blog-listings">
+      <div style={styles.container}>
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }, index) => {
@@ -42,7 +42,7 @@ class Blog extends React.Component {
             if (index % 2 === 0) {
               return (
                 <div
-                  style={styles.container}
+                  style={styles.blogListingContainer}
                   className="blog-listing-container"
                   onClick={() => push(post.frontmatter.path)}
                 >
@@ -65,7 +65,7 @@ class Blog extends React.Component {
             } else {
               return (
                 <div
-                  style={styles.container}
+                  style={styles.blogListingContainer}
                   className="blog-listing-container"
                   onClick={() => push(post.frontmatter.path)}
                 >
@@ -98,17 +98,23 @@ Blog.propTypes = {
 }
 
 const styles = {
-  main: {
-
-  },
   container: {
     display: 'flex',
-    width: '100%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '90vw',
+    margin: '0 auto',
+    justifyContent: 'space-between',
+  },
+  blogListingContainer: {
+    display: 'flex',
     alignItems: 'center',
+    flex: '1',
+    maxWidth: '980px',
   },
   blogContainer: {
     padding: 10,
-    flex: 1,
+    flex: 1
   },
   blogImageContainer: {
     flex: 1
