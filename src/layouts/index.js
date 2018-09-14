@@ -6,8 +6,7 @@ import Link from 'gatsby-link';
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import './index.sass'
-// import './index.css'
+import './index.css'
 // import '../styles/layout-override.css'
 
 import Typography from 'typography'
@@ -40,7 +39,7 @@ const Layout = ({ children, data }) => (
             <div
               style={{
                 margin: "0 auto",
-                maxWidth: 980,
+                maxWidth: "100vw",
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
@@ -55,7 +54,7 @@ const Layout = ({ children, data }) => (
             <div
               style={{
                 margin: "0 auto",
-                maxWidth: "90vw",
+                maxWidth: "100vw",
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",

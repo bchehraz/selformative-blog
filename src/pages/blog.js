@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 import Media from 'react-media'
 
-import '../styles/blog-listing.css'
+import '../styles/blog-listing.sass'
 
 class Blog extends React.Component {
 
@@ -18,6 +18,7 @@ class Blog extends React.Component {
     this.state = {
       showingMore: postsToShow > 12,
       postsToShow,
+      device: 'noneDetectedYet',
     }
   }
 
@@ -32,60 +33,38 @@ class Blog extends React.Component {
     const { edges: posts } = this.props.data.allMarkdownRemark;
 
     return (
-      <div style={styles.container}>
+      <div className="blog-listing-container">
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }, index) => {
             const title = post.frontmatter.title;
             const tags = post.frontmatter.tags;
 
-            if (index % 2 === 0) {
-              return (
-                <div
-                  style={styles.blogListingContainer}
-                  className="blog-listing-container"
-                  onClick={() => push(post.frontmatter.path)}
-                >
-                  <div style={styles.container} className="blog-listing-preview-main">
-                    <div style={styles.blogContainer} key={post.id}>
-                      <h4 className="category">{this.getTags(tags)}</h4>
-                      <h1>
-                        {title}
-                      </h1>
-                      <h2 className="date" >{post.frontmatter.date}</h2>
+            return (
+              <div
+                className="blog-listing-outer"
+                onClick={() => push(post.frontmatter.path)}
+                key={post.id}
+              >
+                <div className="blog-listing">
+                  <div className="blog-listing-text" key={post.id}>
+                    <h4 className="category">{this.getTags(tags)}</h4>
+                    <h1>
+                      {title}
+                    </h1>
+                    <h2 className="date" >{post.frontmatter.date}</h2>
 
-                      <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-                    </div>
-                    <div className="blog-listing-preview-main blog-post-image" style={styles.blogImageContainer}>
-                      <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
-                    </div>
+                    <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+                  </div>
+                  <div className="blog-listing-image-container">
+                    <Img
+                      sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+                      className="blog-listing-image"
+                    />
                   </div>
                 </div>
-              );
-            } else {
-              return (
-                <div
-                  style={styles.blogListingContainer}
-                  className="blog-listing-container"
-                  onClick={() => push(post.frontmatter.path)}
-                >
-                  <div style={styles.container} className="blog-listing-preview-main">
-                    <div className="blog-listing-preview-main" style={styles.blogImageContainer}>
-                      <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
-                    </div>
-                    <div style={styles.blogContainer} key={post.id}>
-                      <h4 className="category">{this.getTags(tags)}</h4>
-                      <h1>
-                        {title}
-                      </h1>
-                      <h2 className="date" >{post.frontmatter.date}</h2>
-
-                      <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-                    </div>
-                  </div>
-                </div>
-              )
-            }
+              </div>
+            )
           })
         }
       </div>
@@ -95,30 +74,6 @@ class Blog extends React.Component {
 
 Blog.propTypes = {
    data: PropTypes.object
-}
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    width: '90vw',
-    margin: '0 auto',
-    justifyContent: 'space-between',
-  },
-  blogListingContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    flex: '1',
-    maxWidth: '980px',
-  },
-  blogContainer: {
-    padding: 10,
-    flex: 1
-  },
-  blogImageContainer: {
-    flex: 1
-  }
 }
 
 export default Blog;
