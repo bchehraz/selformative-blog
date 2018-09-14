@@ -34,7 +34,7 @@ class Header extends React.Component {
       <div
         style={{
           //background: '#030301',
-          marginBottom: '2rem',
+          marginBottom: '0',
         }}
       >
         <Headroom>
