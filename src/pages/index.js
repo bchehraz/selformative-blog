@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 
-import '../styles/blog-listing.css'
+import '../styles/blog-listing.sass'
 import BgImage from '../components/BgImage';
 
 class Index extends React.Component {
@@ -25,7 +25,7 @@ class Index extends React.Component {
     const { edges: posts } = this.props.data.allMarkdownRemark;
 
     return (
-      <div className="blog-posts">
+      <div style={styles.container}>
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }, index) => {
@@ -33,7 +33,11 @@ class Index extends React.Component {
 
             if (index === 0) {
               return (
-                <div className="blog-post-preview-main" key={post.id}>
+                <div
+                  className="blog-post-preview-main"
+                  style={styles.blogListingContainer}
+                  key={post.id}
+                >
                   <h1>
                     <Link to={post.frontmatter.path}>{title}</Link>
                   </h1>
@@ -44,7 +48,7 @@ class Index extends React.Component {
               );
             } else {
               return (
-                <div className="blog-post-preview" key={post.id}>
+                <div className="blog-post-preview" style={styles.blogListingContainer} key={post.id}>
                   <h1>
                     <Link to={post.frontmatter.path}>{title}</Link>
                   </h1>
@@ -65,6 +69,21 @@ class Index extends React.Component {
 
 Index.propTypes = {
    data: PropTypes.object
+}
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '90vw',
+    margin: '0 auto',
+    justifyContent: 'space-between',
+  },
+  blogListingContainer: {
+    maxWidth: '980px',
+    flex: 1,
+  }
 }
 
 export default Index;
