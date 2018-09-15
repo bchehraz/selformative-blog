@@ -11,6 +11,7 @@ import './index.css'
 
 import Typography from 'typography'
 import deyoungTheme from 'typography-theme-de-young'
+//import parnassusTheme from 'typography-theme-parnassus'
 
 
 const typography = new Typography(deyoungTheme)
@@ -44,7 +45,7 @@ const Layout = ({ children, data }) => (
                 flexDirection: "row",
                 justifyContent: "space-between",
                 height: "100%",
-                marginTop: "2rem",
+                marginTop: "2.5rem",
               }}
             >
               <div style={{ flex: 1 }}>
