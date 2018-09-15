@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { push } from 'gatsby-link'
+import Link, { push } from 'gatsby-link'
 import Img from 'gatsby-image'
 
 import '../styles/blog-listing.sass'
@@ -24,7 +24,7 @@ class CategoriesTemplate extends React.Component {
 
     return (
       <div className="blog-listing-container">
-        <h2>{`Showing posts with category: ${tag}`}</h2>
+        <h2>{`Showing posts with category: ${tag}`} <Link to="/blog">{`Reset`}</Link></h2>
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }, index) => {
