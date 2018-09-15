@@ -6,8 +6,8 @@ import Img from 'gatsby-image'
 import '../styles/blog-listing.sass'
 
 /*
-  This template is only for /categories/$tag
-  and doesn't work for /categories/
+  This template is only for /category/$tag
+  and doesn't work for /category/
 */
 class CategoriesTemplate extends React.Component {
   getTags = (tags) => {
@@ -24,7 +24,7 @@ class CategoriesTemplate extends React.Component {
 
     return (
       <div className="blog-listing-container">
-        <h2>{`Showing posts with category: ${tag}`} <Link to="/blog">{`Reset`}</Link></h2>
+        <h2 style={{ flexBasis: '100%', textAlign: 'center' }}>{`Showing posts with category: ${tag}`} <Link to="/blog">{`Reset`}</Link></h2>
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }, index) => {
