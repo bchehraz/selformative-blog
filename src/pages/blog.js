@@ -8,20 +8,6 @@ import Media from 'react-media'
 import '../styles/blog-listing.sass'
 
 class Blog extends React.Component {
-
-  constructor() {
-    super()
-    let postsToShow = 12
-    if (typeof window !== 'undefined') {
-      postsToShow = window.postsToShow
-    }
-    this.state = {
-      showingMore: postsToShow > 12,
-      postsToShow,
-      device: 'noneDetectedYet',
-    }
-  }
-
   getTags = (tags) => {
     if (tags !== null) {
       return tags.join(", ");
