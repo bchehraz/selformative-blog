@@ -25,7 +25,7 @@ const Template = ({ data }) => {
               <span key={index} style={{ color: '#aaa' }}>
                 <h4 className="blog-category-label">
                   <span className="blog-category">
-                    <Link key={index} to={'/blog/categories/'+category.replace(/\s+/g, '-').toLowerCase()} style={{ color: 'inherit' }}>
+                    <Link key={index} to={'/blog/category/'+category.replace(/\s+/g, '-').toLowerCase()} style={{ color: 'inherit' }}>
                       {category}
                     </Link>
                   </span>
@@ -53,7 +53,7 @@ const Template = ({ data }) => {
             return (
               <h4 key={index}>
                 <span className="blog-category-list">
-                  <Link key={index} to={'/blog/categories/'+category.fieldValue.replace(/\s+/g, '-').toLowerCase()} style={{ color: 'inherit' }}>
+                  <Link key={index} to={'/blog/category/'+category.fieldValue.replace(/\s+/g, '-').toLowerCase()} style={{ color: 'inherit' }}>
                     {category.fieldValue}
                   </Link>
                 </span>
