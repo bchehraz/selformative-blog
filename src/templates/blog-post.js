@@ -12,7 +12,7 @@ const Template = ({ data }) => {
   let tagsList = data.allMarkdownRemark.group;
 
   return (
-    <div style={styles.container}>
+    <div className="blog-post-container">
       <Helmet title={`Selformative - ${post.frontmatter.title}`} />
       <div className="main-content">
         <h1>{post.frontmatter.title}</h1>
@@ -43,7 +43,7 @@ const Template = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
       </div>{/* <div main-content */}
-      <div className="side-content" style={styles.sideContent}>
+      <div className="side-content">
         <h3>Categories</h3>
         {
           tagsList.map((category, index) => {
@@ -65,18 +65,6 @@ const Template = ({ data }) => {
 
 Template.propTypes = {
   data: PropTypes.object
-}
-
-const styles = {
-  container: {
-    border: '0px solid red',
-    display: 'flex',
-  },
-  sideContent: {
-    flex: 1,
-    padding: 20,
-    border: '0px solid green',
-  },
 }
 
 export default Template
