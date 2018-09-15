@@ -45,7 +45,8 @@ const Layout = ({ children, data }) => (
                 flexDirection: "row",
                 justifyContent: "space-between",
                 height: "100%",
-                marginTop: "2.5rem",
+                marginTop: "1rem",
+                marginBottom: "1rem",
               }}
             >
               <div style={{ flex: 1 }}>
@@ -62,6 +63,7 @@ const Layout = ({ children, data }) => (
                 justifyContent: "space-between",
                 height: "100%",
                 marginTop: "2rem",
+                marginBottom: "2rem",
               }}
             >
             <div style={{ flex: 1 }}>
