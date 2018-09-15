@@ -61,7 +61,7 @@
      // Make tag pages
      tags.forEach(tag => {
        createPage({
-         path: `/categories/${_.kebabCase(tag)}/`,
+         path: `/blog/categories/${_.kebabCase(tag)}/`,
          component: categoryTemplate,
          context: {
            tag,
