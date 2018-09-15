@@ -8,12 +8,15 @@
 div.blog-post-container
   :display flex
   :border 0px solid red
+  :padding $primary-padding
+  :justify-content space-around
+  :flex-direction column
 
 //main-content
 div.main-content
   :flex 3
-  :padding 20px
   :border 0px solid blue
+  :padding $primary-padding
 
 div.main-content span.blog-category:hover,
 span.blog-category-list:hover,
@@ -24,8 +27,29 @@ span.blog-category
   :color #aaa
   :display inline
 
+h4.blog-category-label
+  :white-space pre
+
 //side-content
 div.side-content
   :flex 1
-  :padding 20px
   :border 0px solid green
+  :padding $primary-padding
+
+.blog-image
+  :height auto
+
+@media only screen and (min-width: 630px)
+  div.blog-post-container
+    :flex-direction: row
+
+  .blog-image
+    :height 300px
+
+@media only screen and (min-width: 800px)
+  .blog-image
+    :height 400px
+
+@media only screen and (min-width: 1000px)
+  .blog-image
+    :height auto

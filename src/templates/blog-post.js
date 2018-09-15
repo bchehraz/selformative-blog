@@ -36,7 +36,10 @@ const Template = ({ data }) => {
           })
         }
         <div style={{ paddingTop: 10, paddingBottom: 10 }}>
-          <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
+          <Img
+            className="blog-image"
+            sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+          />
         </div>
         <div
           className="blog-post-content"
