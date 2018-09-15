@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
+import { push } from 'gatsby-link'
 import Img from 'gatsby-image'
 
 import '../styles/blog-listing.sass'
@@ -16,7 +16,7 @@ class CategoriesTemplate extends React.Component {
     }
     return "No Category Found";
   }
-  
+
   render() {
     const { tag } = this.props.pathContext;
     //const { edges: posts } = data.allMarkdownRemark;
@@ -24,6 +24,7 @@ class CategoriesTemplate extends React.Component {
 
     return (
       <div className="blog-listing-container">
+        <h2>{`Showing posts with category: ${tag}`}</h2>
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }, index) => {
