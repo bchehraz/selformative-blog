@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import './index.css';
+import './index.sass';
 
 class Navigation extends React.Component {
   constructor(props, context) {
@@ -9,7 +9,7 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <nav style={styles.navStyle}>
+      <nav className="nav-container">
         <div
           className="navItem"
           onClick={this.handleClick}
@@ -37,13 +37,6 @@ class Navigation extends React.Component {
 }
 
 const styles = {
-  navStyle: {
-    display: 'flex',
-    flex: 1,
-    margin: 'auto',
-    color: 'black',
-    padding: 0,
-  },
   linkStyle: {
     color: '#aaa',
     textDecoration: 'none',

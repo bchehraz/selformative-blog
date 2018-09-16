@@ -2,7 +2,7 @@
 .HeaderLogo
   width: 200px
   max-width: 400px
-  margin: auto
+  margin: 0 auto
   -webkit-transition: all 100ms ease-in-out
   -moz-transition: all 100ms ease-in-out
   -ms-transition: all 100ms ease-in-out
@@ -57,5 +57,9 @@ div.header-container
   :background white
 
 @media only screen and (max-width: 1200px)
-  .headroom .navItem
+  .navItem
     display: none
+
+  div.header-container
+    :flex-direction row wrap
+    :justify-content center
