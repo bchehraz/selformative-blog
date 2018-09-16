@@ -16,7 +16,7 @@ const Footer = () => (
           fontSize: '1em'
         }}>
           <footer style={{ flex: 1, maxWidth: 980 }}>
-            <div style={{ padding: 18,  borderTop: '1px solid black', display: 'flex', justifyContent: 'center', flexFlow: 'column', }}>
+            <div style={{ padding: 18, display: 'flex', justifyContent: 'center', flexFlow: 'column', }}>
               <Link style={styles.linkStyle} to="/">{`Contact`}</Link>
               <Link style={styles.linkStyle} to="/">{`Terms of Service`}</Link>
               <Link style={styles.linkStyle} to="/">{`Privacy Policy`}</Link>
@@ -42,7 +42,7 @@ const Footer = () => (
             <Link style={styles.linkStyle} to="/">{`Terms of Service`}</Link>
             <Link style={styles.linkStyle} to="/">{`Privacy Policy`}</Link>
           </div>
-          Selformative &copy; 2018
+          {`Selformative`} &copy; {`2018`}
 
         </footer>
       </div>
