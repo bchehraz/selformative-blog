@@ -17,6 +17,7 @@ div.blog-listing
   :display flex
   :flex-direction column
   :justify-content space-between
+  :flex-direction column-reverse
 
 div.blog-listing-outer
   :padding $primary-padding
@@ -76,6 +77,7 @@ div.blog-listing-outer:hover h4.category
   div.blog-listing
     :flex-flow row wrap
     :justify-content center
+    :flex-direction row
     :align-items center
 
   div.blog-listing-outer:nth-child(even) div.blog-listing
@@ -93,12 +95,13 @@ div.blog-listing-outer:hover h4.category
 
 @media only screen and (min-width: 630px)
   div.blog-listing-image
-    width: 500px
+    height: 350px
 
 @media only screen and (min-width: 800px)
   div.blog-listing-image
     :height 400px
     :position top
+    :width auto
 
 @media only screen and (min-width: 1200px)
   div.blog-listing-container
@@ -107,9 +110,9 @@ div.blog-listing-outer:hover h4.category
 
   div.blog-listing-outer
     :padding 0
-    :margin 1em
+    :margin 0 10px
     :min-width 400px
-    :max-width: 630px
+    :max-width: 500px
     :margin-top 20px
     :-webkit-transition all 150ms ease-in
     :-moz-transition all 150ms ease-in
@@ -129,11 +132,16 @@ div.blog-listing-outer:hover h4.category
   div.blog-listing-image
     :width auto
     :height 300px
-    :-webkit-transition all 15s linear, height 150ms
-    :-moz-transition all 15s linear, height 150ms
-    :-ms-transition all 15s linear, height 150ms
-    :-o-transition all 15s linear, height 150ms
-    :transition all 15s linear, height 150ms
+    :-webkit-transition all 20s linear, height 150ms, filter 150ms
+    :-moz-transition all 20s linear, height 150ms, filter 150ms
+    :-ms-transition all 20s linear, height 150ms, filter 150ms
+    :-o-transition all 20s linear, height 150ms, filter 150ms
+    :transition all 20s linear, height 150ms, filter 150ms
+    -moz-filter: grayscale(50%)
+    -webkit-filter: grayscale(50%)
+    -o-filter: grayscale(50%)
+    -ms-filter: grayscale(50%)
+    filter: grayscale(50%)
 
   div.blog-listing-outer:hover div.blog-listing-image
     -moz-transform: scale(1.5)
@@ -142,10 +150,14 @@ div.blog-listing-outer:hover h4.category
     -ms-transform: scale(1.5)
     transform: scale(1.5)
     overflow: hidden
+    -moz-filter: grayscale(0%)
+    -webkit-filter: grayscale(0%)
+    -o-filter: grayscale(0%)
+    -ms-filter: grayscale(0%)
+    filter: grayscale(0%)
 
   div.blog-listing-outer:hover
     :padding 0 0 10px
     :margin-top 0px
-    :border-bottom: 5px solid #666
     :border-bottom-left-radius 5px
     :border-bottom-right-radius 5px
