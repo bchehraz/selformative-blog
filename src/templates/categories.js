@@ -24,7 +24,7 @@ class CategoriesTemplate extends React.Component {
 
     return (
       <div className="blog-listing-container">
-        <h2 style={{ flexBasis: '100%', textAlign: 'center' }}>{`Showing posts with category: ${tag}`} <Link to="/blog">{`Reset`}</Link></h2>
+        <h2 style={{ flexBasis: '100%', textAlign: 'center' }}>{`Showing posts with category: `} <span style={{ fontWeight: 'bold', }}>{`${tag}`}</span> <Link to="/blog">{`Reset`}</Link></h2>
         {posts
           .filter(post => post.node.frontmatter.title.length > 0)
           .map(({ node: post }, index) => {
