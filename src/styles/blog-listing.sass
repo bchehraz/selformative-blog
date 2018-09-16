@@ -22,7 +22,8 @@ div.blog-listing-outer
   :padding $primary-padding
   :cursor pointer
   :background-color rgba(255, 255, 255, 0)
-  :border-radius: 25px
+  :border-radius 25px
+  :border-radius 0
   :min-width 90vw
   :flex 1
   :margin auto
@@ -84,8 +85,20 @@ div.blog-listing-outer:hover h4.category
     :padding 10px
     :padding 0 $primary-padding
 
+  div.blog-listing-text p
+    :font-size 0.8em
+
   div.blog-listing-image-container
     :flex 1
+
+@media only screen and (min-width: 630px)
+  div.blog-listing-image
+    width: 500px
+
+@media only screen and (min-width: 800px)
+  div.blog-listing-image
+    :height 400px
+    :position top
 
 @media only screen and (min-width: 1200px)
   div.blog-listing-container
@@ -93,10 +106,46 @@ div.blog-listing-outer:hover h4.category
     :justify-content center
 
   div.blog-listing-outer
+    :padding 0
+    :margin 1em
     :min-width 400px
     :max-width: 630px
+    :margin-top 20px
+    :-webkit-transition all 150ms ease-in
+    :-moz-transition all 150ms ease-in
+    :-ms-transition all 150ms ease-in
+    :-o-transition all 150ms ease-in
+    :transition all 150ms ease-in
 
+  div.blog-listing
+    :flex-direction column-reverse
 
-@media only screen and (min-width: 630px)
-  div.blog-listing-image
+  div.blog-listing-text-container
     :height 300px
+
+  div.blog-listing-image-container
+    :overflow hidden
+
+  div.blog-listing-image
+    :width auto
+    :height 300px
+    :-webkit-transition all 15s linear, height 150ms
+    :-moz-transition all 15s linear, height 150ms
+    :-ms-transition all 15s linear, height 150ms
+    :-o-transition all 15s linear, height 150ms
+    :transition all 15s linear, height 150ms
+
+  div.blog-listing-outer:hover div.blog-listing-image
+    -moz-transform: scale(1.5)
+    -webkit-transform: scale(1.5)
+    -o-transform: scale(1.5)
+    -ms-transform: scale(1.5)
+    transform: scale(1.5)
+    overflow: hidden
+
+  div.blog-listing-outer:hover
+    :padding 0 0 10px
+    :margin-top 0px
+    :border-bottom: 5px solid #666
+    :border-bottom-left-radius 5px
+    :border-bottom-right-radius 5px
