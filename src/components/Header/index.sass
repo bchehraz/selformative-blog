@@ -14,7 +14,7 @@
 
 .headroom--scrolled
   transition: transform 200ms ease-in-out
-
+ 
 .headroom--pinned
   position: fixed
   transform: translateY(0%)
@@ -45,3 +45,7 @@
   opacity: 1
   transform: translateY(0%)
   height: 50px
+
+@media only screen and (max-width: 1200px)
+  .headroom .navItem
+    display: none

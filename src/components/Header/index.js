@@ -38,19 +38,7 @@ class Header extends React.Component {
         }}
       >
         <Headroom>
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: '100%',
-            padding: '1.45rem 1.0875rem',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            display: 'flex',
-            flexDirection: 'column',
-            background: 'white',
-          }}
-        >
-
+        <div className="header-container">
           {/*<Nav style={{ flex: 1, textAlign: 'right' }}/> */}
           <div style={{ flex: 1 }}>
             <Link to="/">
