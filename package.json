@@ -19,6 +19,7 @@
     "lodash": "^4.17.10",
     "object-fit-images": "^3.2.4",
     "radium": "^0.24.1",
+    "react-burger-menu": "^2.5.2",
     "react-headroom": "^2.2.2",
     "react-helmet": "^5.2.0",
     "react-media": "^1.8.0",
