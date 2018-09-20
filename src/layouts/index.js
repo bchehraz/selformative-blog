@@ -6,7 +6,8 @@ import Link from 'gatsby-link';
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import './index.css'
+import MobileMenu from '../components/MobileMenu'
+import './index.sass'
 // import '../styles/layout-override.css'
 
 import Typography from 'typography'
@@ -23,7 +24,7 @@ typography.toString()
 typography.injectStyles()
 
 const Layout = ({ children, data }) => (
-  <div  style={{ background: '#efefef' }}>
+  <div  style={{ background: '#efefef' }} id="outer-container">
     <Helmet
       title={data.site.siteMetadata.title}
       meta={[
@@ -31,48 +32,51 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: 'sample, something' },
       ]}
     />
-    <Header headerImage={data.headerImage} />
-    <div>
-      <Media query={{ maxWidth: 848 }}>
-        {matches =>
-          matches ? (
-            <div
-              style={{
-                margin: "0 auto",
-                maxWidth: "100vw",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                height: "100%",
-                marginTop: "1rem",
-                marginBottom: "1rem",
-              }}
-            >
+    <MobileMenu />
+    <div id="page-wrap">
+      <Header headerImage={data.headerImage} />
+      <div>
+        <Media query={{ maxWidth: 848 }}>
+          {matches =>
+            matches ? (
+              <div
+                style={{
+                  margin: "0 auto",
+                  maxWidth: "100vw",
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  height: "100%",
+                  marginTop: "1rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                <div style={{ flex: 1 }}>
+                    {children()}
+                </div>
+              </div>
+            ) : (
+              <div
+                style={{
+                  margin: "0 auto",
+                  maxWidth: "100vw",
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  height: "100%",
+                  marginTop: "2rem",
+                  marginBottom: "2rem",
+                }}
+              >
               <div style={{ flex: 1 }}>
-                  {children()}
+                {children()}
+                </div>
               </div>
-            </div>
-          ) : (
-            <div
-              style={{
-                margin: "0 auto",
-                maxWidth: "100vw",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                height: "100%",
-                marginTop: "2rem",
-                marginBottom: "2rem",
-              }}
-            >
-            <div style={{ flex: 1 }}>
-              {children()}
-              </div>
-            </div>
-          )
-        }
-      </Media>
-    </div>
+            )
+          }
+        </Media>
+      </div>
+    </div>{/* id: page-wrap*/}
     <Footer />
   </div>
 )
