@@ -13,7 +13,6 @@ import Typography from 'typography'
 import deyoungTheme from 'typography-theme-de-young'
 //import parnassusTheme from 'typography-theme-parnassus'
 
-
 const typography = new Typography(deyoungTheme)
 
 // Output CSS as string.
