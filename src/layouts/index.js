@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Media from 'react-media'
 import Link from 'gatsby-link';
+import Headroom from 'react-headroom';
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -23,63 +24,94 @@ typography.toString()
 // JS web apps.
 typography.injectStyles()
 
-const Layout = ({ children, data }) => (
-  <div  style={{ background: '#efefef' }} id="outer-container">
-    <Helmet
-      title={data.site.siteMetadata.title}
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
-    <MobileMenu />
-    <div id="page-wrap">
-      <Header headerImage={data.headerImage} />
-      <div>
-        <Media query={{ maxWidth: 848 }}>
-          {matches =>
-            matches ? (
-              <div
-                style={{
-                  margin: "0 auto",
-                  maxWidth: "100vw",
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  height: "100%",
-                  marginTop: "1rem",
-                  marginBottom: "1rem",
-                }}
-              >
-                <div style={{ flex: 1 }}>
+class Layout extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      header: {
+        pinned: true
+      }
+    }
+    this.onPin = this.onPin.bind(this)
+    this.onUnpin = this.onUnpin.bind(this)
+  }
+
+  onPin() {
+    this.setState({ header: { pinned: true }})
+  }
+
+  onUnpin() { //header pin
+    this.setState({ header: { pinned: false }})
+  }
+
+  render () {
+    const { children, data } = this.props;
+    return (
+      <div  style={{ background: '#efefef' }} id="outer-container">
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            { name: 'description', content: 'Sample' },
+            { name: 'keywords', content: 'sample, something' },
+          ]}
+        />
+        <MobileMenu pinned={this.state.header.pinned} />
+        <div id="page-wrap">
+          <Headroom
+            onPin={this.onPin}
+            onUnpin={this.onUnpin}
+          >
+            <Header headerImage={data.headerImage} />
+          </Headroom>
+          <div>
+            <Media query={{ maxWidth: 848 }}>
+              {matches =>
+                matches ? (
+                  <div
+                    style={{
+                      margin: "0 auto",
+                      maxWidth: "100vw",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      height: "100%",
+                      marginTop: "1rem",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    <div style={{ flex: 1 }}>
+                        {children()}
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      margin: "0 auto",
+                      maxWidth: "100vw",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      height: "100%",
+                      marginTop: "2rem",
+                      marginBottom: "2rem",
+                    }}
+                  >
+                  <div style={{ flex: 1 }}>
                     {children()}
-                </div>
-              </div>
-            ) : (
-              <div
-                style={{
-                  margin: "0 auto",
-                  maxWidth: "100vw",
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  height: "100%",
-                  marginTop: "2rem",
-                  marginBottom: "2rem",
-                }}
-              >
-              <div style={{ flex: 1 }}>
-                {children()}
-                </div>
-              </div>
-            )
-          }
-        </Media>
+                    </div>
+                  </div>
+                )
+              }
+            </Media>
+          </div>
+        </div>{/* id: page-wrap*/}
+        <Footer />
       </div>
-    </div>{/* id: page-wrap*/}
-    <Footer />
-  </div>
-)
+    )
+  }
+}
 
 Layout.propTypes = {
   children: PropTypes.func,
