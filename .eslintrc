@@ -6,5 +6,10 @@
   },
   "extends": [
     "plugin:react/recommended"
-  ]
+  ],
+  "settings": {
+    "react": {
+      "version": "15.0"
+    }
+  }
 }
