@@ -10,9 +10,15 @@ class MobileMenu extends React.Component {
 
     this.state = {
       isOpen: false,
+      pinned: false
     }
 
     this.closeMenu = this.closeMenu.bind(this)
+    this.setPin = this.setPin.bind(this)
+  }
+
+  componentWillReceiveProps(props) {
+    this.setPin(props.pinned)
   }
 
   closeMenu() {
@@ -21,18 +27,28 @@ class MobileMenu extends React.Component {
     })
   }
 
+  setPin(status) {
+    if (status !== this.state.pinned) {
+      this.setState({
+        pinned: status
+      })
+    }
+  }
+
   render() {
     return (
-      <Menu
-        isOpen={this.state.isOpen}
-        pageWrapId={"page-wrap"}
-        outerContainerId={"outer-container"}
-        left
-      >
-        <Link onClick={this.closeMenu} id="home" className="menu-item" to="/blog">Blog</Link>
-        <Link id="about" className="menu-item"  to="/about">About</Link>
-        <Link id="contact" className="menu-item" to="/contact">Contact</Link>
-      </Menu>
+      <div className={(this.state.pinned) ? "pinned" : "unpinned"}>
+        <Menu
+          isOpen={this.state.isOpen}
+          pageWrapId={"page-wrap"}
+          outerContainerId={"outer-container"}
+          left
+        >
+          <Link onClick={this.closeMenu} id="home" className="menu-item" to="/blog">Blog</Link>
+          <Link id="about" className="menu-item"  to="/about">About</Link>
+          <Link id="contact" className="menu-item" to="/contact">Contact</Link>
+        </Menu>
+      </div>
     )
   }
 }
