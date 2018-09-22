@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 import Link from 'gatsby-link'
 
 import '../styles/blog-post.sass'
+import EmailForm from '../components/EmailForm/'
 
 const Template = ({ data }) => {
   const post = data.markdownRemark;
@@ -61,6 +62,7 @@ const Template = ({ data }) => {
             )
           })
         }
+        <EmailForm img={data.emailFormImage} />
       </div>{/* <div className=side-content */}
     </div>
   )
@@ -96,6 +98,12 @@ export const pageQuery = graphql`
     ) {
       group(field: frontmatter___tags) {
         fieldValue
+      }
+    }
+
+    emailFormImage: imageSharp(id: { regex: "/email_form_bg/" }) {
+      sizes(maxWidth: 800 ) {
+          ...GatsbyImageSharpSizes
       }
     }
   }
