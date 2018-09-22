@@ -20,7 +20,7 @@
   -ms-transition: all 200ms ease-in-out
   -o-transition: all 200ms ease-in-out
   transition: all 200ms ease-in-out
-  margin: 0 auto
+  height: auto
 
 .headroom--pinned
   position: fixed
@@ -48,12 +48,11 @@
   width: 100px
   min-width: 100px
 
-.headroom--scrolled:hover
-  .navItem
-    opacity: 1
-    transform: translateY(0%)
-    height: 50px
-    margin: 0
+.headroom--scrolled:hover .navItem
+  opacity: 1
+  transform: translateY(0%)
+  height: 40px
+  margin: 0
 
 div.header-container
   :margin 0 auto
