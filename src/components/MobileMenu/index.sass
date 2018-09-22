@@ -1,10 +1,31 @@
 /* Position and sizing of burger button */
 .bm-burger-button
-  position: fixed
-  width: 39px
-  height: 33px
-  left: 36px
-  top: 36px
+  position: absolute
+  width: 40px
+  height: 35px
+  left: 40px
+  top: 40px
+  -webkit-transition: all 200ms ease-in-out
+  -moz-transition: all 200ms ease-in-out
+  -ms-transition: all 200ms ease-in-out
+  -o-transition: all 200ms ease-in-out
+  transition: all 200ms ease-in-out
+
+.unpinned .bm-burger-button
+  left: 35px
+  top: 35px
+  width: 40px
+  height: 35px
+  opacity: 1
+  position: absolute
+
+.pinned .bm-burger-button
+  left: 35px
+  top: 35px
+  width: 40px
+  height: 35px
+  position: absolute
+  opacity: 1
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars
