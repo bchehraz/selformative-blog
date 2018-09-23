@@ -4,6 +4,8 @@ import { bubble as Menu } from 'react-burger-menu'
 
 import './index.sass';
 
+//TODO: Refactor unnecessary closeMenu code since it seems to work without it
+
 class MobileMenu extends React.Component {
   constructor(props) {
     super(props)
