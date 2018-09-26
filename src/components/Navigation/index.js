@@ -28,7 +28,7 @@ class Navigation extends React.Component {
           style={styles.navItem}
           onClick={this.handleClick}
         >
-          <h2><Link style={styles.linkStyle} to="/chat" activeStyle={styles.activeLink}>{`LET'S CHAT`}</Link></h2>
+          <h2><Link style={styles.linkStyle} to="/lets-chat" activeStyle={styles.activeLink}>{`LET'S CHAT`}</Link></h2>
         </div>
       </nav>
     );

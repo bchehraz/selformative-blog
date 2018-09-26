@@ -46,9 +46,9 @@ class MobileMenu extends React.Component {
           outerContainerId={"outer-container"}
           left
         >
-          <Link onClick={this.closeMenu} id="home" className="menu-item" to="/blog">Blog</Link>
-          <Link id="about" className="menu-item"  to="/about">About</Link>
-          <Link id="contact" className="menu-item" to="/contact">Contact</Link>
+          <Link onClick={this.closeMenu} id="home" className="menu-item" to="/blog">{`Blog`}</Link>
+          <Link id="about" className="menu-item"  to="/about">{`About Me`}</Link>
+          <Link id="contact" className="menu-item" to="/lets-chat">{`Let's Chat`}</Link>
         </Menu>
       </div>
     )

@@ -60,6 +60,7 @@ class Layout extends React.Component {
         <MobileMenu pinned={this.state.header.pinned} />
         <div id="page-wrap">
           <Headroom
+            pinStart={50}
             onPin={this.onPin}
             onUnpin={this.onUnpin}
           >
@@ -94,8 +95,8 @@ class Layout extends React.Component {
                       flexDirection: "row",
                       justifyContent: "space-between",
                       height: "100%",
-                      marginTop: "2rem",
-                      marginBottom: "2rem",
+                      marginTop: "3rem",
+                      marginBottom: "3rem",
                     }}
                   >
                   <div style={{ flex: 1 }}>
