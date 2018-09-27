@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
+import BgImg from '../components/BgImage'
 import ChatForm from '../components/ChatForm'
 
 const Container = styled.div`
@@ -8,6 +9,7 @@ const Container = styled.div`
   align-items: center
   justify-content: center
   flex-direction: column
+  margin: 0 auto
 `
 
 const Heading = styled.div`
@@ -19,63 +21,36 @@ const Heading = styled.div`
 `
 
 const fadeOut = keyframes`
-  from {
+  25% {
     opacity: 1
-    position: absolute
   }
 
-  85% {
-    opacity: 1
-    position: absolute
+  30% {
+    opacity: 0
+  }
+
+  93.75% {
+    opacity: 0
   }
 
   to {
-    opacity: 0
-    position: absolute
+    opacity: 1
   }
-`
-
-const fadeIn = keyframes`
-from {
-  opacity: 0
-  position: absolute
-}
-
-15% {
-  opacity: 1
-  position: absolute
-}
-
-85% {
-  opacity: 1
-  position: absolute
-}
-
-to {
-  opacity: 1
-  position: absolute
-}
 `
 
 const fadeInAndOut = keyframes`
-  from {
+  from, to {
     opacity: 0
-    position: absolute
   }
 
-  15% {
+  15%, 85% {
     opacity: 1
-    position: absolute
   }
+`
 
-  85% {
-    opacity: 1
-    position: absolute
-  }
-
-  to {
+const wait = keyframes`
+  from, to {
     opacity: 0
-    position: absolute
   }
 `
 
@@ -83,27 +58,30 @@ const TransitionBox = styled.div`
   display: flex
   flex-direction: row
   justify-content: center
-  margin-bottom: 2rem
+  margin-bottom: 5rem
 `
 
 const TransitionHeading = styled.h1`
   margin: 0 auto
-  opacity: 0
+  opacity: ${props => props.index === 0 ? 1 : 0}
   position: absolute
+  padding: 2rem 0
   display: inline-block
-  animation: ${props => (props.index===0) ? fadeOut : ((props.last) ? fadeIn : fadeInAndOut)} ${(props) => props.current && 'ease-in-out 1'}
-  animation-duration: ${props => props.index===0 ? '7s' : '7.5s'}
+  animation: ${props => (props.index===0) ? fadeOut : fadeInAndOut} ease-in-out 1
+  animation-duration: ${props => props.index===0 ? '24s' : '7.5s'}
   animation-delay: ${props => (props.index > 0) ? props.index*7.5+'s' : 0}
   animation-direction: normal
   animation-fill-mode: normal
-  animation-play-state: running 5s
+  animation-play-state: running
+  color: white
+  width: 100%
 `
 
 const generateHeadings = () => {
   const headings = [
-    "Share Your Story",
-    "Leave a Suggestion",
-    "Ask Me Anything"
+    "Share Your Story.",
+    "Leave a Suggestion.",
+    "Ask Me Anything."
   ]
   for (let i=0; i<3; ++i) {
     let saved = headings[i]
@@ -114,21 +92,34 @@ const generateHeadings = () => {
   return headings
 }
 
-const letsChat = () => (
-  <Container>
-    <Heading>
-      <TransitionBox>
-        {generateHeadings().map((heading, index, arr) => {
-          //console.log("Random number ==> " + Math.random() * 10)
-          return (
-            <TransitionHeading index={index} current={false} key={index}>{heading}</TransitionHeading>
-          )
-        })}
-        </TransitionBox>
-    </Heading>
-
-    <ChatForm />
-  </Container>
-)
+const letsChat = ({ data }) => {
+  return(
+    <Container>
+      <BgImg
+        image={data.chatImage}
+      />
+      <Heading>
+        <TransitionBox>
+          {generateHeadings().map((heading, index, arr) => {
+            //console.log("Random number ==> " + Math.random() * 10)
+            return (
+              <TransitionHeading index={index} key={index}>{heading}</TransitionHeading>
+            )
+          })}
+          </TransitionBox>
+      </Heading>
+      <ChatForm />
+    </Container>
+)}
 
 export default letsChat
+
+export const query = graphql`
+  query ChatPageQuery {
+    chatImage: imageSharp(id: { regex: "/chat/" }) {
+      sizes(maxWidth: 2000) {
+          ...GatsbyImageSharpSizes
+      }
+    }
+  }
+`
