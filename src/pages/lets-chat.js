@@ -10,6 +10,7 @@ const Container = styled.div`
   justify-content: center
   flex-direction: column
   margin: 0 auto
+  height: auto
 `
 
 const Heading = styled.div`
@@ -77,42 +78,63 @@ const TransitionHeading = styled.h1`
   width: 100%
 `
 
-const generateHeadings = () => {
-  const headings = [
-    "Share Your Story.",
-    "Leave a Suggestion.",
-    "Ask Me Anything."
-  ]
-  for (let i=0; i<3; ++i) {
-    let saved = headings[i]
-    let value = Math.floor(Math.random()*3)
-    headings[i] = headings[value]
-    headings[value] = saved
+class LetsChat extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      headings: []
+    }
+
+    this.generateHeadings = this.generateHeadings.bind(this)
   }
-  return headings
+
+  componentWillMount() {
+    this.setState({
+      headings: this.generateHeadings()
+    })
+  }
+
+  generateHeadings() {
+    const headings = [
+      "Share Your Story.",
+      "Leave a Suggestion.",
+      "Ask Me Anything."
+    ]
+    for (let i=0; i<3; ++i) {
+      let saved = headings[i]
+      let value = Math.floor(Math.random()*3)
+      headings[i] = headings[value]
+      headings[value] = saved
+    }
+    return headings
+  }
+
+  render() {
+    const { data } = this.props;
+
+    return(
+      <Container>
+        <BgImg
+          image={data.chatImage}
+        />
+        <Heading>
+          <TransitionBox>
+            {this.state.headings.map((heading, index, arr) => {
+              //console.log("Random number ==> " + Math.random() * 10)
+              return (
+                <TransitionHeading index={index} key={index}>{heading}</TransitionHeading>
+              )
+            })}
+            </TransitionBox>
+        </Heading>
+        <ChatForm />
+      </Container>
+    )
+  }
 }
 
-const letsChat = ({ data }) => {
-  return(
-    <Container>
-      <BgImg
-        image={data.chatImage}
-      />
-      <Heading>
-        <TransitionBox>
-          {generateHeadings().map((heading, index, arr) => {
-            //console.log("Random number ==> " + Math.random() * 10)
-            return (
-              <TransitionHeading index={index} key={index}>{heading}</TransitionHeading>
-            )
-          })}
-          </TransitionBox>
-      </Heading>
-      <ChatForm />
-    </Container>
-)}
-
-export default letsChat
+export default LetsChat
 
 export const query = graphql`
   query ChatPageQuery {

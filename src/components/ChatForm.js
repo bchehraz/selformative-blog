@@ -7,28 +7,76 @@ const Form = styled.form`
   text-align: center
   width: 100%
   max-width: 500px
+  z-index: 0
+  background-color: #fff
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 `
 
 const FormHeader = styled.h3`
   padding: 0
   margin: 0
+  color: black
 `
 
 const TextInput = styled.input`
   margin: 1em auto
+  width: 100%
+  padding: 1em
+  color: white
+  background-color: #333
+  border: none
+  margin-bottom: ${props => props.beganTyping ? '4rem' : '0'}
 `
 
 const MessageField = styled.textarea`
   width: 100%
   padding: 1em
   margin: 0 auto
+  color: white
+  background-color: #333
+  border: none
+  min-height: 200px
 `
 
 const CharLimit = styled.div`
   border-radius: 5px
   display: inline
   padding: 0.5em
-  color: #fff
+`
+
+const SendButton = styled.input`
+  width: 100%
+  color: white
+  background-color: #4e85ad
+  padding: 1em
+  margin-top: 1em
+`
+
+const CharCountContainer = styled.div`
+  paddingBottom: 1
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  opacity: ${props => props.beganTyping ? 1 : 0}
+  margin: 0 auto
+  grid-column: 1;
+  grid-row: 1;
+`
+
+const MessageFieldLabel = styled.h3`
+  opacity: ${props => props.beganTyping ? 0 : 1}
+  grid-column: 1;
+  grid-row: 1;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
 `
 
 class ChatForm extends React.Component {
@@ -77,23 +125,35 @@ class ChatForm extends React.Component {
           onChange={this.handleEmailChange}
         />
 
+
+        <div style={{ display: 'grid' }}>
+          <MessageFieldLabel beganTyping={remaining !== 512}>
+            {'Your Message'}
+          </MessageFieldLabel>
+          <CharCountContainer
+            beganTyping={remaining !== 512}
+          >
+            <h2>{`Characters Remaining: `}
+              <CharLimit
+                status={maxLength - this.state.message.length}
+                style={{
+                  backgroundColor: this.selectColorBasedOnRemaining(),
+                  color: `${(remaining > 68) ? 'black' : 'white'}`
+                }}
+              >
+                {`${maxLength - this.state.message.length}`}
+              </CharLimit>
+            </h2>
+          </CharCountContainer>
+        </div>
         <MessageField
-          placeholder="Max characters: 512"
+          placeholder=""
           maxLength={maxLength}
           onChange={this.handleTextAreaChange}
+          beganTyping={remaining !== 512}
         />
 
-        <h2>{`Characters Remaining: `}
-          <CharLimit
-            status={maxLength - this.state.message.length}
-            style={{
-              backgroundColor: this.selectColorBasedOnRemaining(),
-              color: `${(remaining > 68) ? 'black' : 'white'}`
-            }}
-          >
-            {`${maxLength - this.state.message.length}`}
-          </CharLimit>
-        </h2>
+        <SendButton type="button" value="Send" />
       </Form>
     )
   }
