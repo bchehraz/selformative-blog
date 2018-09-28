@@ -58,7 +58,7 @@ class Layout extends React.Component {
           ]}
         />
         <MobileMenu pinned={this.state.header.pinned} />
-        <div id="page-wrap">
+        <div id="page-wrap" style={{ position: 'relative', }}>
           <Headroom
             pinStart={50}
             onPin={this.onPin}
@@ -78,8 +78,9 @@ class Layout extends React.Component {
                       flexDirection: "row",
                       justifyContent: "space-between",
                       height: "100%",
-                      marginTop: "1rem",
-                      marginBottom: "1rem",
+                      marginTop: "0",
+                      zIndex: 1,
+                      paddingBottom: '200px',
                     }}
                   >
                     <div style={{ flex: 1 }}>
@@ -95,8 +96,9 @@ class Layout extends React.Component {
                       flexDirection: "row",
                       justifyContent: "space-between",
                       height: "100%",
-                      marginTop: "3rem",
-                      marginBottom: "3rem",
+                      marginTop: "0",
+                      paddingBottom: '200px',
+                      zIndex: 1,
                     }}
                   >
                   <div style={{ flex: 1 }}>
@@ -107,8 +109,8 @@ class Layout extends React.Component {
               }
             </Media>
           </div>
+          <Footer />
         </div>{/* id: page-wrap*/}
-        <Footer />
       </div>
     )
   }
