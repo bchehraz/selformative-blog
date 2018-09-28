@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 const BgImage = (props) => (
   <Img sizes={props.image.sizes}
     style={{
-      position: 'fixed',
+      position: 'absolute',
       left: 0,
       top: 0,
       height: '100vh',

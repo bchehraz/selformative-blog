@@ -117,6 +117,7 @@ class LetsChat extends React.Component {
       <Container>
         <BgImg
           image={data.chatImage}
+          style={{ position: 'fixed', }}
         />
         <Heading>
           <TransitionBox>
