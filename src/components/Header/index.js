@@ -1,9 +1,8 @@
 import React from 'react';
-import Link from 'gatsby-link'
+import Link from 'gatsby-link';
 import Img from 'gatsby-image';
-import PropTypes from 'prop-types';
 
-import Navigation from '../Navigation/';
+import Navigation from '../Navigation';
 
 import './index.sass';
 
@@ -16,8 +15,9 @@ class Header extends React.Component {
   }
 
   toggleMenu() {
+    const { visible } = this.state;
     this.setState({
-      visible: !this.state.visible
+      visible,
     });
   }
 
@@ -27,6 +27,8 @@ class Header extends React.Component {
   }
 
   render() {
+    const { headerImage } = this.props;
+
     return (
       <div className="header-container">
         <div style={{ flex: 1 }}>
@@ -35,20 +37,15 @@ class Header extends React.Component {
               className="HeaderLogo"
               title="Header Image"
               alt="selformative logo"
-              sizes={this.props.headerImage.sizes}
+              sizes={headerImage.sizes}
             />
           </Link>
         </div>
-        <div className="filler"/>
+        <div className="filler" />
         <Navigation />
       </div>
     );
   }
 }
 
-Header.propTypes = {
-  headerImage: PropTypes.object,
-  sizes: PropTypes.object
-}
-
-export default Header
+export default Header;
