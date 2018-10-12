@@ -1,16 +1,15 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import Img from 'gatsby-image'
-import Link from 'gatsby-link'
+import Img from 'gatsby-image';
+import Link from 'gatsby-link';
 
-import '../styles/blog-post.sass'
-import EmailForm from '../components/EmailForm/'
+import '../styles/blog-post.sass';
+import EmailForm from '../components/EmailForm';
 
 const Template = ({ data }) => {
   const post = data.markdownRemark;
-  let tags = post.frontmatter.tags;
-  let tagsList = data.allMarkdownRemark.group;
+  const { tags } = post.frontmatter;
+  const { tagsList } = data.allMarkdownRemark.group;
 
   return (
     <div className="blog-post-container">
@@ -18,22 +17,22 @@ const Template = ({ data }) => {
       <div className="main-content">
         <h1>{post.frontmatter.title}</h1>
         <h2 className="date">{post.frontmatter.date}</h2>
-        <h4 className="blog-category-label">{"in "}</h4>
+        <h4 className="blog-category-label">in </h4>
         {
           tags.map((category, index) => {
-            let useComma = (index+1 != tags.length);
+            const useComma = (index + 1 !== tags.length);
             return (
-              <span key={index} style={{ color: '#aaa' }}>
+              <span key={category} style={{ color: '#aaa' }}>
                 <h4 className="blog-category-label">
                   <span className="blog-category">
-                    <Link key={index} to={'/blog/category/'+category.replace(/\s+/g, '-').toLowerCase()} style={{ color: 'inherit' }}>
+                    <Link key={category} to={`/blog/category/${category.replace(/\s+/g, '-').toLowerCase()}`} style={{ color: 'inherit' }}>
                       {category}
                     </Link>
                   </span>
                 </h4>
-                {(useComma) ? ", " : ""}
+                {(useComma) ? ', ' : ''}
               </span>
-            )
+            );
           })
         }
         <div style={{ paddingTop: 10, paddingBottom: 10 }}>
@@ -46,33 +45,30 @@ const Template = ({ data }) => {
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
-      </div>{/* <div main-content */}
+      </div>
       <div className="side-content">
         <h3>Categories</h3>
         {
-          tagsList.map((category, index) => {
+          tagsList.map((category) => {
+            const { fieldValue } = category;
             return (
-              <h4 key={index}>
+              <h4 key={category}>
                 <span className="blog-category-list">
-                  <Link key={index} to={'/blog/category/'+category.fieldValue.replace(/\s+/g, '-').toLowerCase()} style={{ color: 'inherit' }}>
-                    {category.fieldValue}
+                  <Link key={category} to={`/blog/category/${fieldValue.replace(/\s+/g, '-').toLowerCase()}`} style={{ color: 'inherit' }}>
+                    {fieldValue}
                   </Link>
                 </span>
               </h4>
-            )
+            );
           })
         }
         <EmailForm img={data.emailFormImage} />
-      </div>{/* <div className=side-content */}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-Template.propTypes = {
-  data: PropTypes.object
-}
-
-export default Template
+export default Template;
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
