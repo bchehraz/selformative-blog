@@ -1,8 +1,9 @@
 import React from 'react';
 import Img from 'gatsby-image';
 
-const BgImage = (props) => (
-  <Img sizes={props.image.sizes}
+const BgImage = ({ image, style }) => (
+  <Img
+    sizes={image.sizes}
     style={{
       position: 'absolute',
       left: 0,
@@ -10,7 +11,7 @@ const BgImage = (props) => (
       height: '100vh',
       width: '100%',
       zIndex: 0,
-      ...props.style
+      ...style,
     }}
   />
 );
