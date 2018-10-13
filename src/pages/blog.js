@@ -23,6 +23,8 @@ const Blog = ({ data }) => {
             title,
             tags,
             path,
+            date,
+            featuredImage,
           } = post.frontmatter;
 
           return (
@@ -40,13 +42,13 @@ const Blog = ({ data }) => {
                   <h1>
                     {title}
                   </h1>
-                  <h2 className="date">{post.frontmatter.date}</h2>
+                  <h2 className="date">{date}</h2>
 
                   <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
                 </div>
                 <div className="blog-listing-image-container">
                   <Img
-                    sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+                    sizes={featuredImage.childImageSharp.sizes}
                     className="blog-listing-image"
                   />
                 </div>
