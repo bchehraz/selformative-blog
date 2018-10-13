@@ -63,11 +63,9 @@ class Layout extends React.Component {
           >
             <Header headerImage={data.headerImage} />
           </Headroom>
-          <div>
-            <div className="layout-container">
-              <div style={{ flex: 1 }}>
-                {children()}
-              </div>
+          <div className="layout-container">
+            <div style={{ flex: 1 }}>
+              {children()}
             </div>
           </div>
           <Footer />
