@@ -9,7 +9,7 @@ import EmailForm from '../components/EmailForm';
 const Template = ({ data }) => {
   const post = data.markdownRemark;
   const { tags } = post.frontmatter;
-  const { tagsList } = data.allMarkdownRemark.group;
+  const tagsList = data.allMarkdownRemark.group;
 
   return (
     <div className="blog-post-container">
