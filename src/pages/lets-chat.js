@@ -110,7 +110,7 @@ class LetsChat extends React.Component {
     const { headingList } = this.state;
 
     return (
-      <Container className="chatform-container">
+      <Container className="lets-chat-container">
         <BgImg
           image={data.chatImage}
           style={{ position: 'fixed' }}
