@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 import BgImg from '../components/BgImage';
 import ChatForm from '../components/ChatForm';
+import '../components/ChatForm/index.sass';
 
 const Container = styled.div`
   display: flex
@@ -11,6 +12,7 @@ const Container = styled.div`
   flex-direction: column
   margin: 0 auto
   height: auto
+  margin-bottom: 150px
 `;
 
 const Heading = styled.div`
@@ -108,7 +110,7 @@ class LetsChat extends React.Component {
     const { headingList } = this.state;
 
     return (
-      <Container>
+      <Container className="chatform-container">
         <BgImg
           image={data.chatImage}
           style={{ position: 'fixed' }}
