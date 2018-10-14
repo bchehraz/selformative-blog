@@ -1,41 +1,71 @@
-import React from 'react'
-import Media from 'react-media'
-import Link from 'gatsby-link'
-import styled from 'styled-components'
+import React from 'react';
+import Link from 'gatsby-link';
+import styled from 'styled-components';
+import Img from 'gatsby-image';
+import { FaEnvelope, FaFacebook, FaInstagram } from 'react-icons/fa';
 
-const FooterWrapper = styled.div`
-  text-align: center
-  padding: 0
+import './index.sass';
+
+const FooterWrapper = styled.footer`
   background-color: white
   display: flex
-  flex-direction: row
-  justify-content: center
-  font-size: 1em
-  position: absolute;
-  bottom: 0;
+  flex-flow: row wrap
+  justify-content: space-around
+  align-items: center
+  position: absolute
+  bottom: 0
+  height: 300px
+  flex: 1
   width: 100%;
-  height: 200px;
-  zIndex: 3
-`
+  zIndex: 0
+  padding: 0 20px
+  border-bottom: solid 40px #fff
+`;
 
-const Footer = () => (
-  <FooterWrapper>
-    <footer style={{ flex: 1, maxWidth: '100vw', zIndex: 3 }}>
-      <div style={{ padding: 18, display: 'flex', justifyContent: 'center', flexFlow: 'column', }}>
-        <Link style={styles.linkStyle} to="/">{`Contact`}</Link>
-        <Link style={styles.linkStyle} to="/">{`Terms of Service`}</Link>
-        <Link style={styles.linkStyle} to="/">{`Privacy Policy`}</Link>
-      </div>
-      Selformative &copy; 2018
-    </footer>
-  </FooterWrapper>
-)
+const FooterSection = styled.div`
+  display: flex
+  justify-content: center
+  flex-direction: ${props => props.row || 'column'}
+  text-align: center
+`;
+
+const LogoContainer = styled.div`
+  width: 100%
+  padding: 1em
+`;
 
 const styles = {
-  linkStyle: {
-    padding: '0',
-    margin: '5px 30px'
-  }
-}
+  icon: {
+    margin: '0 5px',
+  },
+};
 
-export default Footer
+const Footer = ({ footerImage }) => (
+  <FooterWrapper className="footer-wrapper">
+    <LogoContainer>
+      <Img
+        sizes={footerImage.sizes}
+        className="footerImage"
+        title="Footer Image"
+        alt="selformative logo"
+      />
+    </LogoContainer>
+    <FooterSection>
+      <Link to="/">Contact</Link>
+      <Link to="/">Terms of Service</Link>
+      <Link to="/">Privacy Policy</Link>
+    </FooterSection>
+    <FooterSection row>
+      <a href="mailto:selformative@gmail.com"><FaEnvelope style={styles.icon} size={30} /></a>
+      <a href="https://instagram.com/selformative"><FaInstagram style={styles.icon} size={30} /></a>
+      <a href="https://facebook.com/selformative"><FaFacebook style={styles.icon} size={30} /></a>
+    </FooterSection>
+    <FooterSection>
+      <span>&copy; 2018</span>
+      <Link to="/privacy-terms">Privacy / Terms</Link>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.babakchehraz.com">Web Design Agency</a>
+    </FooterSection>
+  </FooterWrapper>
+);
+
+export default Footer;
