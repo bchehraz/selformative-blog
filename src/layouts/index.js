@@ -61,14 +61,14 @@ class Layout extends React.Component {
             onPin={this.onPin}
             onUnpin={this.onUnpin}
           >
-            <Header headerImage={data.headerImage} />
+            <Header headerImage={data.logo} />
           </Headroom>
           <div className="layout-container">
             <div style={{ flex: 1 }}>
               {children()}
             </div>
           </div>
-          <Footer />
+          <Footer footerImage={data.logo} />
         </div>
       </div>
     );
@@ -86,7 +86,7 @@ export const query = graphql`
     }
 
     # query header image
-    headerImage: imageSharp(id: { regex: "/logo_3_2/" }) {
+    logo: imageSharp(id: { regex: "/logo_3_2/" }) {
       sizes(maxWidth: 1240 ) {
           ...GatsbyImageSharpSizes
       }
