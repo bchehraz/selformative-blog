@@ -72,36 +72,34 @@ const TransitionHeading = styled.h1`
   width: 100%
 `;
 
-class LetsChat extends React.Component {
-  static generateHeadings() {
-    const headings = [
-      'Share Your Story.',
-      'Leave a Suggestion.',
-      'Ask Me Anything.',
-    ];
+const generateHeadings = () => {
+  const headings = [
+    'Share Your Story.',
+    'Leave a Suggestion.',
+    'Ask Me Anything.',
+  ];
 
-    for (let i = 0; i < 3; i += 1) {
-      const saved = headings[i];
-      const value = Math.floor(Math.random() * 3);
-      headings[i] = headings[value];
-      headings[value] = saved;
-    }
-    return headings;
+  for (let i = 0; i < 3; i += 1) {
+    const saved = headings[i];
+    const value = Math.floor(Math.random() * 3);
+    headings[i] = headings[value];
+    headings[value] = saved;
   }
+  return headings;
+};
 
+class LetsChat extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       headingList: [],
     };
-
-    this.generateHeadings = this.generateHeadings.bind(this);
   }
 
   componentWillMount() {
     this.setState({
-      headingList: this.generateHeadings(),
+      headingList: generateHeadings(),
     });
   }
 
