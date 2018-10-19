@@ -2,8 +2,6 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import Navigation from '../Navigation';
-
 import './index.sass';
 
 class Header extends React.Component {
@@ -42,7 +40,6 @@ class Header extends React.Component {
           </Link>
         </div>
         <div className="filler" />
-        <Navigation />
       </div>
     );
   }

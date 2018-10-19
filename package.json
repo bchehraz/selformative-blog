@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "Selformative",
+  "description": "Selformative's Blog Website",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Babak Chehraz <babak.chehraz@gmail.com>",
   "dependencies": {
     "gatsby": "^1.9.277",
     "gatsby-image": "^1.0.55",
@@ -22,7 +22,6 @@
     "object-fit-images": "^3.2.4",
     "radium": "^0.24.1",
     "react-burger-menu": "^2.5.2",
-    "react-headroom": "^2.2.2",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.2.0",
     "react-media": "^1.8.0",
