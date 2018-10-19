@@ -51,9 +51,8 @@ const Footer = ({ footerImage }) => (
       />
     </LogoContainer>
     <FooterSection>
-      <Link to="/">Contact</Link>
-      <Link to="/">Terms of Service</Link>
-      <Link to="/">Privacy Policy</Link>
+      <Link to="/about">About</Link>
+      <Link to="/lets-chat">Contact</Link>
     </FooterSection>
     <FooterSection row>
       <a href="mailto:selformative@gmail.com"><FaEnvelope style={styles.icon} size={30} /></a>
