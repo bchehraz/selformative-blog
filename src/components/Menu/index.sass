@@ -11,34 +11,32 @@
   -o-transition: all 200ms ease-in-out
   transition: all 200ms ease-in-out
 
-.unpinned .bm-burger-button
-  left: 35px
-  top: 35px
-  width: 40px
-  height: 35px
-  opacity: 1
-  position: absolute
-
-.pinned .bm-burger-button
-  left: 35px
-  top: 35px
-  width: 40px
-  height: 35px
-  position: absolute
-  opacity: 1
-
 /* Color/shape of burger icon bars */
 .bm-burger-bars
   background: #373a47
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button
-  height: 24px
-  width: 24px
+  height: 50px !important
+  width: 50px !important
+  //adjust margin to space it away from the sides
+  margin: 20px
+  left: 0
+
+/* This positions the cross centrally in the button */
+.bm-cross-button > span
+  top: 0 !important
+  left: 20px !important
 
 /* Color/shape of close button cross */
+/* This targets the actual elements that make up the cross */
 .bm-cross
   background: #bdc3c7
+  background: #fff
+  width: 10px !important
+  height: 50px !important
+  border-radius: 20px
+  flex: 0 0 100% !important
 
 /* General sidebar styles */
 .bm-menu
@@ -46,7 +44,6 @@
   padding: 2.5em 1.5em 0
   padding: 0
   font-size: 1.15em
-  width: 100%
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape
@@ -55,18 +52,12 @@
 /* Wrapper for item list */
 .bm-item-list
   color: #b8b7ad
-  padding: 0.8em
 
 /* Individual item */
 .bm-item
-  display: inline-block
-  border: 1px solid black
   padding: 25px
+  text-align: center
 
 /* Styling of overlay */
 .bm-overlay
   background: rgba(0, 0, 0, 0.3)
-
-@media only screen and (min-width: 1200px)
-  .bm-burger-button
-    display: none
