@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
-import { slide as SlideMenu } from 'react-burger-menu';
+import { stack as SlideMenu } from 'react-burger-menu';
 import Img from 'gatsby-image';
 import { FaEnvelope, FaFacebook, FaInstagram } from 'react-icons/fa';
 
@@ -10,6 +10,7 @@ import './index.sass';
 const styles = {
   icon: {
     margin: '0 5px',
+    color: '#629EC9',
   },
   link: {
     fontSize: '2em',
