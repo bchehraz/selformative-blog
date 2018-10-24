@@ -51,5 +51,5 @@ module.exports = {
     },
     'gatsby-plugin-sass'
   ],
-  pathPrefix: '/selformative-blog',
+  pathPrefix: '/',
 }

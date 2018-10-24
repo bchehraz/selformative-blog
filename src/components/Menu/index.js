@@ -95,7 +95,7 @@ class Menu extends React.Component {
     super(props);
 
     this.state = {
-      isOpen: true,
+      isOpen: false,
     };
 
     this.closeMenu = this.closeMenu.bind(this);

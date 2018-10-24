@@ -10,18 +10,32 @@ const EmailForm = ({ img }) => (
     <Img
       sizes={img.sizes}
       style={{
-        position: 'absolute',
-        left: '74vw',
-        top: '500px',
-        height: '350px',
-        width: '25vw',
+        height: '300px',
+        minWidth: '200px',
+        width: '30vw',
+        maxWidth: '400px',
+        position: 'relative',
+        flex: '1',
       }}
     />
-    <form className="email-form">
-
-      Email Address:
-      <input id={inputId} type="email" />
-    </form>
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        margin: '0 auto',
+        textAlign: 'center',
+        padding: '1em',
+        width: '100%',
+      }}
+    >
+      <h3>Join the List!</h3>
+      <h4>Subscribe for email notifications & more!</h4>
+      <form>
+        Email Address:
+        <input id={inputId} type="email" />
+        <input type="button" value="Subscribe" />
+      </form>
+    </div>
   </div>
 );
 
