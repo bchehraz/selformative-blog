@@ -36,7 +36,13 @@ const Blog = ({ data }) => {
               key={post.id}
               tabIndex={0}
             >
-              <div className="blog-listing">
+              <div className="blog-listing" key={post.id}>
+                <div className="blog-listing-image-container">
+                  <Img
+                    sizes={featuredImage.childImageSharp.sizes}
+                    className="blog-listing-image"
+                  />
+                </div>
                 <div className="blog-listing-text" key={post.id}>
                   <h4 className="category">{getTags(tags)}</h4>
                   <h1>
@@ -45,12 +51,6 @@ const Blog = ({ data }) => {
                   <h2 className="date">{date}</h2>
 
                   <p dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-                </div>
-                <div className="blog-listing-image-container">
-                  <Img
-                    sizes={featuredImage.childImageSharp.sizes}
-                    className="blog-listing-image"
-                  />
                 </div>
               </div>
             </div>
